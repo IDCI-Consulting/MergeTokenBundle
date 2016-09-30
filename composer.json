@@ -22,8 +22,7 @@
         "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-4": { "IDCI\\Bundle\\MergeTokenBundle\\": "" }
+        "psr-4": { "IDCI\\Bundle\\MergeTokenBundle\\": "src/IDCI/Bundle/MergeTokenBundle" }
     },
-    "target-dir": "IDCI/Bundle/MergeTokenBundle",
     "minimum-stability": "dev"
 }
