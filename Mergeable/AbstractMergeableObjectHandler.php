@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Container;
  *
  * @author Brahim Boukoufallah <brahim.boukoufallah@idci-consulting.fr>
  */
-abstract class AbstractMergeableObjectHandler
+abstract class AbstractMergeableObjectHandler implements  MergeableObjectHandlerInterface
 {
     /**
      * @var Serializer

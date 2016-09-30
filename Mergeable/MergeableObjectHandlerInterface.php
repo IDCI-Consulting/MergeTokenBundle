@@ -1,8 +1,8 @@
 <?php
 namespace IDCI\Bundle\MergeTokenBundle\Mergeable;
 
-use IDCI\Bundle\MergeTokenBundle\Exceptions\MissingMergeableObjectMethodException;
-use IDCI\Bundle\MergeTokenBundle\Exceptions\UndefinedMergeableObjectException;
+use IDCI\Bundle\MergeTokenBundle\Exception\MissingMergeableObjectMethodException;
+use IDCI\Bundle\MergeTokenBundle\Exception\UndefinedMergeableObjectException;
 
 /**
  * MergeableObjectHandlerInterface
