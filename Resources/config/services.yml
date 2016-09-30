@@ -14,6 +14,6 @@ services:
 
     idci_merge_token.twig.merge_token_extension:
         class: IDCI\Bundle\MergeTokenBundle\Twig\MergeTokenExtension
-        arguments: [@idci_merge_token.mergeable_object.handler]
+        arguments: [@idci_merge_token.mergeable_object.handler.twig]
         tags:
             - { name: twig.extension }
