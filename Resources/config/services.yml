@@ -10,12 +10,6 @@ services:
         class: IDCI\Bundle\MergeTokenBundle\Mergeable\MergeableObjectHandler
         arguments: [@service_container, %idci_merge_token.mergeable_objects%]
 
-    idci_merge_token.event.subscriber.serializer:
-        class: IDCI\Bundle\MergeTokenBundle\Event\Subscriber\SerializerSubscriber
-        arguments: [@idci_merge_token.mergeable_object.handler]
-        tags:
-            - { name: jms_serializer.event_subscriber }
-
 
     ## Twig Extensions ##
 
