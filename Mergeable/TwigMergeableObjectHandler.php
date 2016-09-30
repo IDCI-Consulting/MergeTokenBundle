@@ -17,6 +17,11 @@ class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
     protected $twig;
 
     /**
+     * @var Container
+     */
+    protected $container;
+
+    /**
      * Constructor
      *
      * @param Container         $container
@@ -26,7 +31,7 @@ class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
     {
         parent::__construct($container, $configuration);
 
-        $this->twig = $container->get('idci_merge_token.twig');
+        $this->container = $container;
     }
 
     /**
@@ -36,7 +41,7 @@ class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
      */
     public function getTwig()
     {
-        return $this->twig;
+        return $this->container->get('idci_merge_token.twig');
     }
 
     /**
