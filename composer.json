@@ -1,0 +1,28 @@
+{
+    "name": "idci/merge-token-bundle",
+    "type": "symfony-bundle",
+    "description": "IDCI MergeTokenBundle",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brahim BOUKOUFALLAH",
+            "email": "brahim.boukoufallah@idci-consulting.fr",
+            "homepage": "http://www.idci-consulting.fr"
+        }
+    ],
+    "require": {
+        "php":                      "~5.5|~7.0",
+        "twig/twig":                "~1.0",
+        "jms/serializer-bundle":    "~1.1",
+        "doctrine/common":          "v2.6.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-4": { "IDCI\\Bundle\\MergeTokenBundle\\": "" }
+    },
+    "target-dir": "IDCI/Bundle/MergeTokenBundle",
+    "minimum-stability": "dev"
+}
