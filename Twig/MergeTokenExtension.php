@@ -1,7 +1,7 @@
 <?php
 namespace IDCI\Bundle\MergeTokenBundle\Twig;
 
-use IDCI\Bundle\MergeTokenBundle\Mergeable\MergeableObjectHandler;
+use IDCI\Bundle\MergeTokenBundle\Mergeable\MergeableObjectHandlerInterface;
 
 /**
  * MergeTokenExtension
@@ -15,9 +15,9 @@ class MergeTokenExtension extends \Twig_Extension
     /**
      * Constructor
      *
-     * @param MergeableObjectHandler $mergeableObjectHandler
+     * @param MergeableObjectHandlerInterface $mergeableObjectHandler
      */
-    public function __construct(MergeableObjectHandler $mergeableObjectHandler)
+    public function __construct(MergeableObjectHandlerInterface $mergeableObjectHandler)
     {
         $this->mergeableObjectHandler = $mergeableObjectHandler;
     }
@@ -25,7 +25,7 @@ class MergeTokenExtension extends \Twig_Extension
     /**
      * Get Mergeable Object Handler
      *
-     * @return MergeableObjectHandler
+     * @return MergeableObjectHandlerInterface
      */
     public function getMergeableObjectHandler()
     {

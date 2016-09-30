@@ -8,11 +8,12 @@ use IDCI\Bundle\MergeTokenBundle\Tests\Model\Author;
 use IDCI\Bundle\MergeTokenBundle\Tests\Model\Comment;
 use JMS\Serializer\Serializer;
 use Metadata\MetadataFactoryInterface;
+use Symfony\Component\DependencyInjection\Container;
 
 class TwigMergeableObjectHandlerTest extends \PHPUnit_Framework_TestCase
 {
     private $mergeableObjectHandler;
-    private $metadataFactory;
+    private $metadataFactoryMock;
     private $serializerMock;
     private $comment;
     private $author;
@@ -32,9 +33,13 @@ class TwigMergeableObjectHandlerTest extends \PHPUnit_Framework_TestCase
             ->getMockBuilder(Serializer::class)
             ->disableOriginalConstructor()
             ->setMethods(array('getMetadataFactory'))
-            ->setConstructorArgs(array($this->metadataFactory))
+            ->setConstructorArgs(array($this->metadataFactoryMock))
             ->getMock()
         ;
+
+        $container = new Container();
+        $container->set('jms_serializer', $this->serializerMock);
+        $container->set('idci_merge_token.twig', $twigEnvironment);
 
         $this->author  = new Author();
         $this->author
@@ -60,7 +65,7 @@ class TwigMergeableObjectHandlerTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        $this->mergeableObjectHandler = new TwigMergeableObjectHandler($twigEnvironment, $this->serializerMock, $configuration);
+        $this->mergeableObjectHandler = new TwigMergeableObjectHandler($container, $configuration);
     }
 
     public function testMergeToken()

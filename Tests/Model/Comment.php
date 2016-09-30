@@ -4,9 +4,18 @@ namespace IDCI\Bundle\MergeTokenBundle\Tests\Model;
 
 class Comment
 {
+    private $id = 1;
     private $date;
     private $content;
     private $author;
+
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return \DateTime

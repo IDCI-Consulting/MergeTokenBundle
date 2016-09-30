@@ -5,6 +5,7 @@ use Doctrine\Common\Util\ClassUtils;
 use IDCI\Bundle\MergeTokenBundle\Exception\MissingMergeableObjectMethodException;
 use IDCI\Bundle\MergeTokenBundle\Exception\UndefinedMergeableObjectException;
 use JMS\Serializer\Serializer;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * AbstractMergeableObjectHandler
@@ -26,12 +27,12 @@ abstract class AbstractMergeableObjectHandler
     /**
      * Constructor
      *
-     * @param Serializer        $serializer
+     * @param Container         $container
      * @param array             $configuration
      */
-    public function __construct(Serializer $serializer, array $configuration)
+    public function __construct(Container $container, array $configuration)
     {
-        $this->serializer = $serializer;
+        $this->serializer = $container->get('jms_serializer');
 
         foreach ($configuration as $id => $mergeableObjectRaw) {
             $this->setMergeableObject($id, new MergeableObject(

@@ -2,6 +2,7 @@
 namespace IDCI\Bundle\MergeTokenBundle\Mergeable;
 
 use JMS\Serializer\Serializer;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * TwigMergeableObjectHandler
@@ -18,15 +19,14 @@ class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
     /**
      * Constructor
      *
-     * @param \Twig_Environment $twig
-     * @param Serializer        $serializer
+     * @param Container         $container
      * @param array             $configuration
      */
-    public function __construct(\Twig_Environment $twig, Serializer $serializer, array $configuration)
+    public function __construct(Container $container, array $configuration)
     {
-        parent::__construct($serializer, $configuration);
+        parent::__construct($container, $configuration);
 
-        $this->twig = $twig;
+        $this->twig = $container->get('idci_merge_token.twig');
     }
 
     /**
