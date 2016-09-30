@@ -12,13 +12,6 @@ use IDCI\Bundle\MergeTokenBundle\Exception\UndefinedMergeableObjectException;
 interface MergeableObjectHandlerInterface
 {
     /**
-     * Get merge token twig
-     *
-     * @return \Twig_Environment
-     */
-    public function getMergeTokenTwig();
-
-    /**
      * SetMergeableObject
      *
      * @param string                   $id
