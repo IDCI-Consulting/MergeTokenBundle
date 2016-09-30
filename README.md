@@ -9,13 +9,6 @@ Installation
 
 Add dependencies in your `composer.json` file:
 ```json
-"repositories": [
-    ...,
-    {
-        "type": "vcs",
-        "url": "https://github.com/IDCI-Consulting/MergeTokenBundle.git"
-    }
-],
 "require": {
     ...,
     "idci/merge-token-bundle": "dev-master"
