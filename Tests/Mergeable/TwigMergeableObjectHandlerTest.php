@@ -97,4 +97,19 @@ class TwigMergeableObjectHandlerTest extends \PHPUnit_Framework_TestCase
         $this->mergeableObjectHandler->mergeToken($this->comment, 'content', false);
         $this->assertEquals('The author age is {{ comment.author.age }}', $this->comment->getContent());
     }
+
+    public function testMissingMergeableObjectMethodException()
+    {
+        try {
+            $this->mergeableObjectHandler->mergeToken($this->comment, 'description', $this->comment->getContent());
+        } catch (\Exception $e) {
+            $this->assertInstanceOf(MissingMergeableObjectMethodException::class, $e);
+        }
+
+        try {
+            $this->mergeableObjectHandler->mergeToken($this->comment, 'id', $this->comment->getId());
+        } catch (\Exception $e) {
+            $this->assertInstanceOf(MissingMergeableObjectMethodException::class, $e);
+        }
+    }
 }

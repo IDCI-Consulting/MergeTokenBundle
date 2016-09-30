@@ -6,10 +6,9 @@ services:
         class:        "%twig.class%"
         arguments:    [@idci_merge_token.twig_string_loader]
 
-    idci_merge_token.mergeable_object.handler:
-        class: IDCI\Bundle\MergeTokenBundle\Mergeable\MergeableObjectHandler
-        arguments: [@service_container, %idci_merge_token.mergeable_objects%]
-
+    idci_merge_token.mergeable_object.handler.twig:
+        class: IDCI\Bundle\MergeTokenBundle\Mergeable\TwigMergeableObjectHandler
+        arguments: [@idci_merge_token.twig, @jms_serializer, %idci_merge_token.mergeable_objects%]
 
     ## Twig Extensions ##
 
