@@ -29,5 +29,6 @@
     "autoload": {
         "psr-0": { "IDCI\\Bundle\\MergeTokenBundle\\": "" }
     },
+    "target-dir": "IDCI/Bundle/MergeTokenBundle",
     "minimum-stability": "dev"
 }
