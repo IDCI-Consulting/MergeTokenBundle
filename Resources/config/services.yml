@@ -3,7 +3,7 @@ services:
     idci_merge_token.twig_string_loader:
         class:        "Twig_Loader_String"
     idci_merge_token.twig:
-        class:        "%twig.class%"
+        class:        "%twig.default_path%"
         arguments:    ["@idci_merge_token.twig_string_loader"]
 
     idci_merge_token.mergeable_object.handler.twig:
