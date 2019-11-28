@@ -4,16 +4,16 @@ services:
         class:        "Twig_Loader_String"
     idci_merge_token.twig:
         class:        "%twig.class%"
-        arguments:    [@idci_merge_token.twig_string_loader]
+        arguments:    ["@idci_merge_token.twig_string_loader"]
 
     idci_merge_token.mergeable_object.handler.twig:
         class: IDCI\Bundle\MergeTokenBundle\Mergeable\TwigMergeableObjectHandler
-        arguments: [@service_container, %idci_merge_token.mergeable_objects%]
+        arguments: ["@service_container", "%idci_merge_token.mergeable_objects%"]
 
     ## Events Subscriber ##
     tms_merge_token.event.subscriber.serializer:
         class: IDCI\Bundle\MergeTokenBundle\Event\Subscriber\SerializerSubscriber
-        arguments: [@idci_merge_token.mergeable_object.handler.twig]
+        arguments: ["@idci_merge_token.mergeable_object.handler.twig"]
         tags:
             - { name: jms_serializer.event_subscriber }
 
@@ -21,6 +21,6 @@ services:
 
     idci_merge_token.twig.merge_token_extension:
         class: IDCI\Bundle\MergeTokenBundle\Twig\MergeTokenExtension
-        arguments: [@idci_merge_token.mergeable_object.handler.twig]
+        arguments: ["@idci_merge_token.mergeable_object.handler.twig"]
         tags:
             - { name: twig.extension }
