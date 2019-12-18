@@ -12,11 +12,6 @@ use Symfony\Component\DependencyInjection\Container;
 class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
 {
     /**
-     * @var \Twig_Environment
-     */
-    protected $twig;
-
-    /**
      * @var Container
      */
     protected $container;
@@ -24,15 +19,14 @@ class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
     /**
      * Constructor
      *
-     * @param \Twig_Environment $twig
      * @param Container         $container
      * @param array             $configuration
      */
-    public function __construct( \Twig_Environment $twig, Container $container, array $configuration)
+    public function __construct(Container $container, array $configuration)
     {
         parent::__construct($container, $configuration);
 
-        $this->twig = $twig;
+        $this->twig = $container->get('twig');
         $this->container = $container;
     }
 
@@ -41,8 +35,12 @@ class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
      */
     public function merge($value, MergeableObjectInterface $mergeableObject, $object)
     {
-        return $this->twig->createTemplate($value)
-            ->render(array($mergeableObject->getId() => $object))
-        ;
+        try {
+            return $this->twig->createTemplate($value)
+                ->render(array($mergeableObject->getId() => $object))
+            ;
+        } catch (\Exception $e) {
+            return;
+        }
     }
 }
