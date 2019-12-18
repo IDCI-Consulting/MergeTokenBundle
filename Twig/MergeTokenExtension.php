@@ -2,13 +2,15 @@
 namespace IDCI\Bundle\MergeTokenBundle\Twig;
 
 use IDCI\Bundle\MergeTokenBundle\Mergeable\MergeableObjectHandlerInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
 /**
  * MergeTokenExtension
  *
  * @author Brahim Boukoufallah <brahim.boukoufallah@idci-consulting.fr>
  */
-class MergeTokenExtension extends \Twig_Extension
+class MergeTokenExtension extends AbstractExtension
 {
     protected $mergeableObjectHandler;
 
@@ -46,7 +48,7 @@ class MergeTokenExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('merge_token', array($this, 'mergeToken')),
+            new TwigFilter('merge_token', array($this, 'mergeToken')),
         );
     }
 
