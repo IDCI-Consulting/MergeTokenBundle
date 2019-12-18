@@ -141,7 +141,6 @@ abstract class AbstractMergeableObjectHandler implements  MergeableObjectHandler
         }
 
         $mergeableObject = $this->guessMergeableObject($object);
-
         $mergedValue = $this->merge($value, $mergeableObject, $object);
 
         try {
