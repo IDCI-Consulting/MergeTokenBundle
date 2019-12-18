@@ -24,24 +24,16 @@ class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
     /**
      * Constructor
      *
+     * @param \Twig_Environment $twig
      * @param Container         $container
      * @param array             $configuration
      */
-    public function __construct(Container $container, array $configuration)
+    public function __construct( \Twig_Environment $twig, Container $container, array $configuration)
     {
         parent::__construct($container, $configuration);
 
+        $this->twig = $twig;
         $this->container = $container;
-    }
-
-    /**
-     * Get Twig
-     *
-     * @return \Twig_Environment
-     */
-    public function getTwig()
-    {
-        return $this->container->get('idci_merge_token.twig');
     }
 
     /**
@@ -49,9 +41,8 @@ class TwigMergeableObjectHandler extends AbstractMergeableObjectHandler
      */
     public function merge($value, MergeableObjectInterface $mergeableObject, $object)
     {
-        return $this->getTwig()->render(
-            $value,
-            array($mergeableObject->getId() => $object)
-        );
+        return $this->twig->createTemplate($value)
+            ->render(array($mergeableObject->getId() => $object))
+        ;
     }
 }
